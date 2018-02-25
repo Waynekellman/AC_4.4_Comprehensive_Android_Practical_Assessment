@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.nyc.ac_44_comprehensive_android_practical_assessment.model.Breed;
 import com.nyc.ac_44_comprehensive_android_practical_assessment.network.BreedsApi;
@@ -27,6 +28,7 @@ public class BreedsActivity extends AppCompatActivity implements View.OnClickLis
     private Breed breed;
     private Retrofit retrofit;
     private ImageView terrier, spaniel, retriever, poodle;
+    private TextView userName;
     private LinearLayout terrier_layout, spaniel_layout, retriever_layout, poodle_layout;
 
     @Override
@@ -39,10 +41,12 @@ public class BreedsActivity extends AppCompatActivity implements View.OnClickLis
             startActivity(intent);
             finish();
         }
+        String usernameString = sharedPreferences.getString("username", "");
         terrier = findViewById(R.id.terrier);
         spaniel = findViewById(R.id.spaniel);
         retriever = findViewById(R.id.retriever);
         poodle = findViewById(R.id.poodle);
+        userName = findViewById(R.id.welcome_header);
         terrier_layout = findViewById(R.id.terrier_layout);
         spaniel_layout = findViewById(R.id.spaniel_layout);
         retriever_layout = findViewById(R.id.retriever_layout);
@@ -53,7 +57,10 @@ public class BreedsActivity extends AppCompatActivity implements View.OnClickLis
         retriever_layout.setOnClickListener(this);
         poodle_layout.setOnClickListener(this);
 
-
+        if (!usernameString.equals("")) {
+            String text = "What kind of dog would you like to see, " + usernameString + " ?";
+            userName.setText(text);
+        }
 
 
         retrofit = new Retrofit.Builder()
