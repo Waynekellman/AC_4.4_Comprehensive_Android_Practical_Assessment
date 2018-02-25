@@ -27,10 +27,14 @@ public class LoginActivity extends AppCompatActivity {
         submit = findViewById(R.id.submit);
         sharedPreferences = getSharedPreferences(SHARED_PREF_KEY,MODE_PRIVATE);
 
-        if (!sharedPreferences.getString("username", "").equals("") && !sharedPreferences.getString("password", "").equals("")){
+        Intent intentLogout = getIntent();
+        if (!sharedPreferences.getString("username", "").equals("") && !sharedPreferences.getString("password", "").equals("") && !intentLogout.getBooleanExtra("logout", false)){
             Intent intent = new Intent(LoginActivity.this, BreedsActivity.class);
             startActivity(intent);
             Log.d(TAG, "onCreate: Logging back into breeds activity");
+        }else {
+            username.setText("");
+            password.setText("");
         }
 
 

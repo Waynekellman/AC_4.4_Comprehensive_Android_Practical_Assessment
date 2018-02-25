@@ -1,6 +1,11 @@
 <resources>
-    <string name="app_name">AC_4.4_Comprehensive_Android_Practical_Assessment</string>
+    <string name="app_name">Dogs</string>
     <string name="submit_login">SUBMIT</string>
     <string name="user_name">username</string>
     <string name="password">password</string>
+    <string name="welcome_header_string">What kind of dog would you like to see, {UserName}?</string>
+    <string name="terrier">Terrier</string>
+    <string name="spaniel">Spaniel</string>
+    <string name="retriever">Retriever</string>
+    <string name="poodle">Poodle</string>
 </resources>
