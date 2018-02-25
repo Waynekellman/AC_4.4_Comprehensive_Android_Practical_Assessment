@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">AC_4.4_Comprehensive_Android_Practical_Assessment</string>
+    <string name="submit_login">SUBMIT</string>
+    <string name="user_name">username</string>
+    <string name="password">password</string>
+</resources>
