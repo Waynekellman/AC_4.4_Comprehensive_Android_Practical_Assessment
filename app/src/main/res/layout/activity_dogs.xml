@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#eeeeee"
     tools:context="com.nyc.ac_44_comprehensive_android_practical_assessment.DogsActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/breed_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/retriever"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:elevation="10dp"
+        android:background="#fff"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:textStyle="italic" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffe0b2">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
