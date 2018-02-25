@@ -94,7 +94,7 @@ public class BreedsActivity extends AppCompatActivity implements View.OnClickLis
 
             @Override
             public void onFailure(Call<Breed> call, Throwable t) {
-
+                t.printStackTrace();
             }
         });
     }
