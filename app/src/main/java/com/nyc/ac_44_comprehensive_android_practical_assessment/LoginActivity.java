@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         if (!sharedPreferences.getString("username", "").equals("") && !sharedPreferences.getString("password", "").equals("")){
             Intent intent = new Intent(LoginActivity.this, BreedsActivity.class);
             startActivity(intent);
+            Log.d(TAG, "onCreate: Logging back into breeds activity");
         }
 
 
@@ -60,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(LoginActivity.this,BreedsActivity.class);
                     startActivity(intent);
+                    Log.d(TAG, "onClick: went to BreedsAvtivity first Time");
 
                 }
             }
