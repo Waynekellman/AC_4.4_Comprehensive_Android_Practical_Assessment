@@ -21,6 +21,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
+
 public class DogsActivity extends AppCompatActivity {
 
     private static final String TAG = "DogsActivity";
@@ -39,12 +41,19 @@ public class DogsActivity extends AppCompatActivity {
         if (intent != null) {
             breedName = intent.getStringExtra("breedName");
             Log.d(TAG, "onCreate: " + intent.getStringExtra("breedName"));
+        } else if (savedInstanceState != null){
+            breedName = savedInstanceState.getString("breedName");
         } else {
             breedName = "";
         }
 
         breedAdapter = new BreedAdapter();
-        GridLayoutManager layoutManager = new GridLayoutManager(this,2, LinearLayoutManager.VERTICAL,false);
+        GridLayoutManager layoutManager;
+        if (getResources().getConfiguration().orientation == ORIENTATION_LANDSCAPE) {
+            layoutManager = new GridLayoutManager(this, 3, LinearLayoutManager.VERTICAL, false);
+        } else {
+            layoutManager = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
+        }
         recyclerView.setAdapter(breedAdapter);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -77,6 +86,13 @@ public class DogsActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (!breedName.equals("")){
+            outState.putString("breedName", breedName);
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
