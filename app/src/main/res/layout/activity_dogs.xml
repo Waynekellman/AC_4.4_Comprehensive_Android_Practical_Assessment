@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#eeeeee"
+    android:background="#ffe0b2"
     tools:context="com.nyc.ac_44_comprehensive_android_practical_assessment.DogsActivity">
 
     <TextView

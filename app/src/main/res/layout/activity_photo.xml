@@ -11,5 +11,6 @@
     <ImageView
         android:id="@+id/dog_photo"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"
+        android:background="#ffe0b2"/>
 </LinearLayout>
