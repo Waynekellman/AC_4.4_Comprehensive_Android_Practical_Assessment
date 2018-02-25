@@ -1,5 +1,6 @@
 package com.nyc.ac_44_comprehensive_android_practical_assessment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ public class DogsActivity extends AppCompatActivity {
     private String breedName;
     private RecyclerView recyclerView;
     private BreedAdapter breedAdapter;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,14 @@ public class DogsActivity extends AppCompatActivity {
                 .baseUrl("https://dog.ceo/api/breed/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
+
+        dialog=new ProgressDialog(DogsActivity.this);
+        dialog.setMessage("Getting dogs now");
+        dialog.setCancelable(false);
+        dialog.setInverseBackgroundForced(false);
+        dialog.show();
+
         if (!breedName.equals("")){
             BreedsApi breedService = retrofit.create(BreedsApi.class);
             Call<BreedImgList> breedImgListCall = breedService.getList(breedName);
@@ -69,12 +79,14 @@ public class DogsActivity extends AppCompatActivity {
                 public void onResponse(Call<BreedImgList> call, Response<BreedImgList> response) {
                     if (response.isSuccessful()) {
                         breedAdapter.setBreedImgUrl(response.body().getMessage());
+                        dialog.dismiss();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<BreedImgList> call, Throwable t) {
                     t.printStackTrace();
+                    dialog.dismiss();
                 }
             });
         }
